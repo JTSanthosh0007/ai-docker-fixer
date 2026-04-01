@@ -19,7 +19,8 @@ node ../../index.js
 ```
 
 ### 10-Second Demo
-https://github.com/JTSanthosh0007/ai-docker-fixer/raw/main/demo.mp4
+![Tengu Demo Video](demo.mp4)
+
 
 
 ---
