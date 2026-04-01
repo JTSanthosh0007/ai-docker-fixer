@@ -28,8 +28,9 @@ node ../../index.js
 ## 🎥 Demo (10 seconds)
 
 <p align="center">
-  <img src="demo.mp4" width="800"/>
+  <img src="demo.mp4" width="600"/>
 </p>
+
 
 
 
@@ -83,14 +84,14 @@ Now Tengu:
 
 ---
 
-## 🔒 Scope (v0.1.0)
+## 🔒 Scope (v0.2.0)
 
 ### ✅ Supported
-
-* Node.js apps
-* Simple Dockerfiles
-* Port mismatch fixes
-* Missing dependency fixes
+- Node.js applications (Express, Fastify, and basic scripts)
+- Simple `Dockerfile` deployments
+- **Deep Detection**: Native scan of Source Code ports (`app.listen`)
+- Port mismatch detection & automated patching
+- Missing dependency detection & automated fixing (npm)
 
 ### ❌ Not Supported
 
@@ -128,7 +129,7 @@ Tengu:
 
 ## 🚀 Status
 
-**v0.1.0 — Experimental**
+**v0.2.0 — Experimental**
 
 This is an early-stage system focused on:
 
