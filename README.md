@@ -19,8 +19,8 @@ node ../../index.js
 ```
 
 ### 10-Second Demo
-> *(Drop your OBS recording here as `demo.gif`)*
-![Demo of auto-fixing a Docker app](demo.gif)
+https://github.com/JTSanthosh0007/ai-docker-fixer/raw/main/demo.mp4
+
 
 ---
 
