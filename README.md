@@ -27,7 +27,10 @@ node ../../index.js
 
 ## 🎥 Demo (10 seconds)
 
-<video src="demo.mp4" controls width="100%"></video>
+<p align="center">
+  <img src="demo.mp4" width="800"/>
+</p>
+
 
 
 ---
