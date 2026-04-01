@@ -1,0 +1,24 @@
+{
+  "name": "tengu-devops",
+  "version": "0.1.0",
+  "description": "Autonomous DevOps agent that detects and fixes failing deployments.",
+  "main": "index.js",
+  "bin": {
+    "tengu": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@google/genai": "*",
+    "dotenv": "^16.4.5"
+  },
+  "keywords": [
+    "devops",
+    "ai",
+    "docker",
+    "agent"
+  ],
+  "author": "Santhosh JT",
+  "license": "MIT"
+}
