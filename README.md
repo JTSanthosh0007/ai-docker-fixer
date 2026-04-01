@@ -27,9 +27,8 @@ node ../../index.js
 
 ## 🎥 Demo (10 seconds)
 
-> ⚠️ Replace this with a GIF (NOT mp4)
+<video src="demo.mp4" controls width="100%"></video>
 
-![Demo](demo.gif)
 
 ---
 
