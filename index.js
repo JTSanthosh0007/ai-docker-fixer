@@ -34,7 +34,27 @@ function runCmd(cmd) {
     }
 }
 
-async function askAI(logs) {
+function analyzeProject() {
+    const context = { framework: 'Unknown', codePorts: [] };
+    try {
+        if (fs.existsSync('package.json')) {
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            if (pkg.dependencies?.express) context.framework = 'Express';
+            if (pkg.dependencies?.fastify) context.framework = 'Fastify';
+        }
+        
+        // Scan for port patterns in code (simple & small)
+        const files = fs.readdirSync(process.cwd()).filter(f => f.endsWith('.js') || f.endsWith('.ts'));
+        for (const file of files) {
+            const content = fs.readFileSync(file, 'utf8');
+            const match = content.match(/listen\((\d+)\)/);
+            if (match) context.codePorts.push({ file, port: match[1] });
+        }
+    } catch {}
+    return context;
+}
+
+async function askAI(logs, projectContext) {
     const dockerfilePath = path.join(process.cwd(), 'Dockerfile');
     let originalDockerfile = fs.readFileSync(dockerfilePath, 'utf8');
 
@@ -64,10 +84,14 @@ Return ONLY the raw, fixed Dockerfile text. Do not use markdown blocks. No expla
 Error Logs:
 ${logs}
 
+Project Discovery:
+Framework: ${projectContext.framework}
+Source Code Port Findings: ${JSON.stringify(projectContext.codePorts)}
+
 Current Dockerfile:
 ${originalDockerfile}
 
-Expected Behavior: Fix the EXPOSE directive to match the application port in the logs.
+Expected Behavior: Fix the EXPOSE directive to match the application port.
     `;
 
     console.log('\n--- [AI INPUT] ---');
@@ -165,6 +189,8 @@ async function start() {
     }
 
     let dockerName = 'tengu-demo-test';
+    const projectContext = analyzeProject();
+    console.log('[INFO] Discovery: Framework=%s, Ports=%s', projectContext.framework, projectContext.codePorts.map(p => p.port).join(', ') || 'None');
     
     // Step 1: Build
     console.log('[1/4] Building Docker Image...');
@@ -203,7 +229,7 @@ async function start() {
             console.log('\x1b[35m%s\x1b[0m', `[DETECTION] ${rule.fix(logs.match(rule.pattern))}`);
             
             // Invoke AI Hook
-            const aiDecision = await askAI(`Logs: ${logs}`);
+            const aiDecision = await askAI(`Logs: ${logs}`, projectContext);
             
             if (aiDecision.action === 'fail') {
                 console.error('\n❌ [SAFETY CHECK 1]: AI failed basic validation. Deployment halted.');
