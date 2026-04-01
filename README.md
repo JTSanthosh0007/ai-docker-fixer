@@ -1,66 +1,141 @@
 # 🚀 AI That Fixes Broken Docker Apps Automatically
 
-### Run one command → Watch it detect, fix, and redeploy your app
+### Run one command → Watch AI detect, fix, and redeploy your app
+
+---
+
+## ⚡ Try it in 10 seconds
 
 ```bash
 git clone https://github.com/JTSanthosh0007/ai-docker-fixer.git
 cd ai-docker-fixer/examples/1-port-mismatch
-
-# Run the autonomous loop
 node ../../index.js
 ```
 
-### The Output (Proof)
+---
+
+## 💥 What happens
+
 ```text
 ❌ Health Check Failed
-[DETECTION] App listens on port 5000. Verify Dockerfile EXPOSE matches.
+[DETECTION] App listens on port 5000
 [AI] Fixing Dockerfile...
-✅ SUCCESS
+✅ SUCCESS: Container responds correctly!
 ```
 
-### 10-Second Demo
-![Tengu Demo Video](demo.mp4)
+---
 
+## 🎥 Demo (10 seconds)
 
+> ⚠️ Replace this with a GIF (NOT mp4)
+
+![Demo](demo.gif)
 
 ---
 
-## 🔒 Scope & Capabilities
+## 🧠 What this does
 
-Tengu v0.1.0 is built for precise, controlled execution rather than broad, chaotic generic AI.
+Tengu is a **controlled AI execution loop** that:
 
-✅ **Supported**:
-- Node.js applications
-- Simple `Dockerfile` deployments
-- Port mismatch detection & automated patching
-- Missing dependency detection & automated fixing
-
-❌ **Not Supported (Yet)**:
-- Complex multi-stage Docker builds
-- Multi-container `docker-compose` networks setups
-- Applications without clear explicit `stdout` port logs
-- Environment-variable-based dynamic port bindings
+* Detects why your Docker container failed
+* Extracts real signals from logs
+* Uses AI to generate a fix
+* Validates the output (no blind trust)
+* Applies the fix safely
+* Re-deploys automatically
 
 ---
 
-## 🧠 Core Architecture: Real AI vs Guaranteed Demo
+## ⚙️ How it works
 
-Tengu supports **two operation modes** out of the box so that *anyone* can test it instantly.
+```text
+Run → Fail → Detect → Fix → Validate → Redeploy
+```
 
-### 🟢 1. Viral Demo Mode (Default)
-If you run Tengu without an API key, it falls back to a **guaranteed mock**. 
-- It simulates the intelligent reasoning without burning API tokens.
-- **Why?** It ensures this repository works 100% of the time as a frictionless local proof-of-concept.
+---
 
-### 🔥 2. Real AI Mode (Experimental)
-To use actual generative problem-solving, just inject your API key:
-1. Create a `.env` file in the root directory.
-2. Add `GEMINI_API_KEY=your_key_here`.
+## 🔑 Modes
 
-When Tengu detects this key:
-1. It uses Google's `gemini-2.5-flash` model.
-2. It sends your specific Dockerfile, your crash logs, and the detection state.
-3. It forces the output format, parses it strictly, and applies the physical change.
-4. If the AI hallucinates bad syntax or the new deployment fails again, Tengu safely reverts your `Dockerfile` to its original state and halts the loop.
+### 🟢 Demo Mode (default)
 
-*You didn’t just build an AI tool. You built a system that safely controls AI.*
+* No setup required
+* Uses mock AI
+* Always works → perfect for testing
+
+---
+
+### 🔥 Real AI Mode (optional)
+
+Add your API key:
+
+```env
+GEMINI_API_KEY=your_key_here
+```
+
+Now Tengu:
+
+* Sends logs + Dockerfile to AI
+* Generates a real fix
+* Validates before applying
+* Reverts if anything breaks
+
+---
+
+## 🔒 Scope (v0.1.0)
+
+### ✅ Supported
+
+* Node.js apps
+* Simple Dockerfiles
+* Port mismatch fixes
+* Missing dependency fixes
+
+### ❌ Not Supported
+
+* Multi-stage Docker builds
+* docker-compose setups
+* Dynamic ports (env-based)
+* Complex production systems
+
+---
+
+## 🛡️ Safety Features
+
+* Strict output validation (no blind AI execution)
+* Port verification from real logs
+* Retry mechanism (2 attempts)
+* Automatic rollback on failure
+* Diff preview before applying changes
+
+---
+
+## 🧠 Why this exists
+
+Most AI tools:
+
+❌ Generate code blindly
+❌ Break your environment
+
+Tengu:
+
+✅ Constrains AI
+✅ Validates everything
+✅ Applies only safe changes
+
+---
+
+## 🚀 Status
+
+**v0.1.0 — Experimental**
+
+This is an early-stage system focused on:
+
+* Reliability
+* Safety
+* Controlled AI usage
+
+---
+
+## ⭐ If this helped you
+
+Star the repo and try it on your broken Docker apps.
