@@ -28,8 +28,9 @@ node ../../index.js
 ## 🎥 Demo (10 seconds)
 
 <p align="center">
-  <img src="demo.mp4" width="600"/>
+  <video src="demo.mp4" width="600" autoplay loop muted playsinline></video>
 </p>
+
 
 
 
