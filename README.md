@@ -27,7 +27,8 @@ node ../../index.js
 
 ## 🎥 Demo (10 seconds)
 
-<video src="https://github.com/JTSanthosh0007/ai-docker-fixer/blob/main/demo.mp4?raw=true" width="600" autoplay loop muted playsinline></video>
+<video src="https://raw.githubusercontent.com/JTSanthosh0007/ai-docker-fixer/main/demo.mp4" width="600" autoplay loop muted playsinline></video>
+
 
 
 
